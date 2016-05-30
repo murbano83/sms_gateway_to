@@ -12,7 +12,7 @@ module SmsGatewayTo
 
   module Rails
 
-  	def self.setup
+    def self.setup
       load_yaml_config
       nil
     end
