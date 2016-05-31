@@ -1,8 +1,6 @@
 # SmsGatewayTo
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sms_gateway_to`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+SMSGatewayTo gem is a ruby wrapper for the smsgateway.to service.
 
 ## Installation
 
@@ -22,7 +20,46 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To use the gem as a standalone library
+`
+
+	# Product token aka API key from smsgateway.to 
+	
+	client = SmsGatewayTo.client("producttoken") 
+
+	# To send an sms 
+	# from - The from address in the sms
+	# to   - The number you want to send the sms to
+	# message - The text message you want to send
+
+	client.send_message(from, to, message)
+`
+
+If you are using it with rails
+
+
+1. Create a smsgateway.yaml file in the config folder of the rails app
+
+`
+
+	Sample smsgateway.yaml file
+	
+	development:
+		token: dev-token
+	production:
+		token: production-token
+	test:
+		token: test-token
+	
+`
+2. The Gem will automatically chose the right token based on the environment.
+
+`
+
+
+	client = SmsGatewayto.client # returns default client based on the environment
+	client.send_message(from, to, message)
+`
 
 ## Development
 
@@ -32,7 +69,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sms_gateway_to. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/h0lyalg0rithm/sms_gateway_to. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
