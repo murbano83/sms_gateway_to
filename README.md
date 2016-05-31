@@ -21,8 +21,8 @@ Or install it yourself as:
 ## Usage
 
 To use the gem as a standalone library
-`
 
+```ruby
 	# Product token aka API key from smsgateway.to 
 	
 	client = SmsGatewayTo.client("producttoken") 
@@ -33,15 +33,14 @@ To use the gem as a standalone library
 	# message - The text message you want to send
 
 	client.send_message(from, to, message)
-`
+```
 
 If you are using it with rails
 
 
 1. Create a smsgateway.yaml file in the config folder of the rails app
 
-`
-
+```ruby
 	Sample smsgateway.yaml file
 	
 	development:
@@ -50,16 +49,14 @@ If you are using it with rails
 		token: production-token
 	test:
 		token: test-token
-	
-`
+```
+
 2. The Gem will automatically chose the right token based on the environment.
 
-`
-
-
+```ruby
 	client = SmsGatewayto.client # returns default client based on the environment
 	client.send_message(from, to, message)
-`
+```
 
 ## Development
 
