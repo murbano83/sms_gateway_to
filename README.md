@@ -25,7 +25,7 @@ To use the gem as a standalone library
 ```ruby
 	# Product token aka API key from smsgateway.to 
 	
-	client = SmsGatewayTo.client("producttoken") 
+	client = SmsGatewayTo::Client.new("producttoken") 
 
 	# To send an sms 
 	# from - The from address in the sms
