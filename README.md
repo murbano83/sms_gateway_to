@@ -33,6 +33,14 @@ To use the gem as a standalone library
 	# message - The text message you want to send
 
 	client.send_message(from, to, message)
+	
+	# Same as above but will raise error based on the backend response
+	
+	begin
+	   client.send_message!(from, to, message)
+	rescue SmsGatewayTo::StandardError, SmsGatewayTo::ParameterError
+	   # Do something
+	end
 ```
 
 If you are using it with rails
@@ -41,7 +49,7 @@ If you are using it with rails
 1. Create a smsgateway.yaml file in the config folder of the rails app
 
 ```ruby
-	Sample smsgateway.yaml file
+	# Sample smsgateway.yaml file
 	
 	development:
 		token: dev-token
