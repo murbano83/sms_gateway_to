@@ -9,7 +9,28 @@ module SmsGatewayTo
     end
 
     def send_message(from, to, message)
-      self.class.get("/gateway.ashx", { query: {producttoken: @product_token, from: from, to: to, body: message}})
+      self.class.post("/json/gateway.ashx",
+                      {
+                        body: {
+                          messages: {
+                            authentication: { 
+                              producttoken: @product_token
+                            },
+                            msg: [{ 
+                              from: from,
+                              to: [{
+                                number: to
+                              }],
+                              body:  { 
+                                type: "AUTO",
+                                content: message 
+                              }
+                            }]
+                          }
+                        }.to_json,
+                        headers: { 'Content-Type' => 'application/json' } 
+                      }
+                     )
     end
 
     def send_message!(from, to, message)
